@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #e8f4f8;
+  font-family: "Arial", sans-serif;
+  padding: 20px;
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 50px;
+  padding-block: 70px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main h1 {
+  font-size: 2rem;
+  color: #2d6a6b;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  padding-inline: 20px;
+  font-style: italic;
+}
+
+.timeline {
+  position: relative;
+  padding: 10px;
+  margin-top: 40px;
+}
+
+/* Vartical Line */
+.timeline::before {
+  content: "";
+  height: 100%;
+  left: 50%;
+  width: 4px;
+  position: absolute;
+  background-color: #2d6a6b;
+  border-radius: 3px;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Point */
+.timeline-item::before {
+  content: "";
+  height: 18px;
+  width: 18px;
+  border: 4px solid white;
+  background-color: #2d6a6b;
+
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-item:nth-child(even) .number-container {
+  justify-content: start;
+  flex-direction: row-reverse;
+}
+
+.number-container {
+  width: 50%;
+  height: 100px;
+  position: relative;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.number {
+  width: 115px;
+  height: 115px;
+  font-size: 3rem;
+  text-align: center;
+  background: linear-gradient(135deg, #2d6a6b, #4a9a9b);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(45, 106, 107, 0.3);
+  line-height: 115px;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.number:hover {
+  transform: scale(1.05) rotate(5deg);
+  background: linear-gradient(135deg, #4a9a9b, #2d6a6b);
+}
+
+.point-connector {
+  width: 20%;
+  height: 4px;
+  background-color: #2d6a6b;
+}
+
+.description-container {
+  padding-left: 40px;
+  margin-block: 60px;
+  width: 50%;
+}
+
+.timeline-item:nth-child(even) .description-container {
+  padding-left: 0px;
+  padding-right: 40px;
+  margin-block: 60px;
+  width: 50%;
+}
+
+.description-container h3 {
+  color: #2d6a6b;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.description-container p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.screenshot-btn {
+  background-color: #459293;
+  color: #fff;
+  width: 200px;
+  height: 40px;
+  border: none;
+  margin-top: 100px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(2, 72, 74, 0.511);
+  font-style: italic;
+}
+
+.screenshot-btn:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    padding: 6px;
+    padding-block: 20px;
+  }
+  main {
+    padding-right: 20px;
+    padding-block: 40px;
+    padding-left: 30px;
+  }
+
+  .screenshot-btn {
+    font-size: 0.85rem;
+    width: 140px;
+    height: 35px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  .number-container {
+    display: none;
+  }
+
+  .timeline {
+    margin-top: 20px;
+  }
+
+  /* Vartical Line */
+  .timeline::before {
+    width: 2px;
+    left: 0px;
+    transform: translateX(-100%);
+  }
+
+  .timeline-item {
+    width: 100%;
+  }
+
+  /* Point */
+  .timeline-item::before {
+    height: 12px;
+    width: 12px;
+    top: 8%;
+    left: 0px;
+    transform: translateX(-105%);
+  }
+
+  .timeline-item:nth-child(even) {
+    flex-direction: row;
+  }
+
+  .timeline-item:nth-child(even) .number-container {
+    display: none;
+  }
+
+  .timeline:nth-child(even) .description-container {
+    width: 100%;
+    margin-block: 20px;
+    padding: 0px;
+    padding-left: 20px;
+  }
+
+  .description-container {
+    width: 100%;
+    margin-block: 20px;
+    padding: 0px;
+    padding-left: 20px;
+  }
+
+  main h1 {
+    font-size: 1.17rem;
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .description-container h3 {
+    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  .description-container p {
+    font-size: 0.95rem;
+  }
+}
