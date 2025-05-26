@@ -1,10 +1,13 @@
 import http from "http";
 import puppeteer from "puppeteer";
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const server = http.createServer(async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://timeline-ysd8.vercel.app"
+  );
   res.setHeader("Access-Control-Allow-Methods", "GET");
 
   if (req.url === "/screenshot" && req.method === "GET") {
@@ -14,7 +17,7 @@ const server = http.createServer(async (req, res) => {
       });
       const page = await browser.newPage();
 
-      await page.goto("http://127.0.0.1:5500/Timeline/frontend/index.html", {
+      await page.goto("https://timeline-ysd8.vercel.app/", {
         waitUntil: "networkidle2",
       });
 

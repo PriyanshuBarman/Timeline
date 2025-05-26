@@ -5,7 +5,9 @@ screenshotBtn.addEventListener("click", async () => {
     screenshotBtn.disabled = true;
     screenshotBtn.textContent = "Please wait...";
 
-    const response = await fetch("http://localhost:3000/screenshot");
+    const response = await fetch(
+      "https://timeline-backend-1opc.onrender.com/screenshot"
+    );
 
     if (!response.ok) throw new Error("Failed to fetch screenshot");
 
@@ -20,7 +22,6 @@ screenshotBtn.addEventListener("click", async () => {
 
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-
   } catch (error) {
     console.error("Error downloading screenshot:", error);
     alert("Failed to download screenshot. Please try again.");
